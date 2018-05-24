@@ -10,12 +10,16 @@ class MainOverview extends React.Component {
     render() {
         return (
             <div className="main-overview">
-                <div>
-                    <span> Welcome to zaflaszke.pl </span>
+                <div style={{display: "flex"}}>
+                    <div className="main-overview__title">
+                        Zaflaszkę.pl
+                    </div>
+                    <img src={require("../images/bottle.svg")} className="main-overview__image"/>
                 </div>
-                <div>
-                    <SearchField/>
+                <div className="main-overview__subtitle">
+                    Mała przysługa, za dużą przyjemność!
                 </div>
+                <SearchField/>
             </div>
         )
     }

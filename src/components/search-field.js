@@ -9,6 +9,16 @@ const cities = [
     'Kraków',
 ];
 
+const styles = {
+    textFieldStyle: {
+        fontSize: "25px",
+        fontWeight: "bold",
+    },
+    menuItemStyle: {
+        fontSize: '25px'
+    }
+};
+
 class SearchField extends React.Component {
     constructor(props) {
         super();
@@ -17,20 +27,24 @@ class SearchField extends React.Component {
         };
     }
 
-    handleUpdateInput = (searchText) => {
+    handleUpdateInput = (searchText, index) => {
         this.setState({
             searchText: searchText,
         });
     };
 
-    handleNewRequest = () => {
+    handleNewRequest = (searchText) => {
         this.setState({
-            searchText: '',
+            searchText: searchText,
         });
     };
 
+    filter = (searchText, key) => {
+        return key.indexOf(searchText) !== -1;
+    };
+
     render() {
-        return(
+        return (
             <div>
                 <AutoComplete
                     hintText="Miasto"
@@ -38,8 +52,10 @@ class SearchField extends React.Component {
                     onUpdateInput={this.handleUpdateInput}
                     onNewRequest={this.handleNewRequest}
                     dataSource={cities}
-                    filter={(searchText, key) => (key.indexOf(searchText) !== -1)}
+                    filter={(searchText, key) => this.filter(searchText, key)}
                     openOnFocus={true}
+                    textFieldStyle={styles.textFieldStyle}
+                    menuProps={{menuItemStyle: styles.menuItemStyle}}
                 />
             </div>
         )

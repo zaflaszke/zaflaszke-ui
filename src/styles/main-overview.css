@@ -1,3 +1,7 @@
+body {
+    font-family: 'Amatic SC', cursive;
+}
+
 .main-overview {
     display: flex;
     justify-content: center;
@@ -5,8 +9,24 @@
     flex-direction: column;
     top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
-    margin: auto;
+    margin: 50px auto;
     position: absolute;
+}
+
+.main-overview__title {
+    font-size: 60px;
+    font-weight: bold;
+    margin: 30px 0 0 10px;
+}
+
+.main-overview__subtitle {
+    font-size: 35px;
+    margin: 0 0 70px 150px;
+}
+
+.main-overview__image {
+    width: auto;
+    height: 100px;
+    margin-bottom: 20px
 }
