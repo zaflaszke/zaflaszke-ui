@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {MuiThemeProvider} from "material-ui";
+import MainOverview from "./main-overview";
 
 export class App extends Component {
     constructor() {
@@ -7,9 +9,11 @@ export class App extends Component {
 
     render() {
         return (
-           <div>
-		   Welcome to zaflaszke.pl
-		   </div>
+            <MuiThemeProvider>
+                <div>
+                    <MainOverview/>
+                </div>
+            </MuiThemeProvider>
         )
     }
 }
