@@ -34,6 +34,25 @@ class SearchField extends React.Component {
         };
     }
 
+    componentDidMount() {
+        this.handleEnterKeyPressed();
+    }
+
+    /**
+     * This is work-around for 'Enter' key pressing when user wants to select item to search field input.
+     */
+    handleEnterKeyPressed = () => {
+        window.addEventListener('keypress', (event) => {
+            const autoCompleteRefsMenu = this.autoComplete.refs.menu;
+            if (event.key === "Enter") {
+                if (autoCompleteRefsMenu === undefined) return;
+                this.autoComplete.props.onNewRequest(
+                    autoCompleteRefsMenu.refs.focusedMenuItem.props.value,
+                    autoCompleteRefsMenu.state.focusIndex);
+            }
+        })
+    };
+
     handleUpdateInput = (searchText, index) => {
         this.setState({
             searchText: searchText,
@@ -71,6 +90,7 @@ class SearchField extends React.Component {
                     textFieldStyle={styles.textFieldStyle}
                     menuProps={{menuItemStyle: styles.menuItemStyle}}
                     style={styles.autoCompleteStyle}
+                    ref={node => this.autoComplete = node}
                 >
                 </AutoComplete>
                 <ClearIcon onClick={this.handleClearInput} style={{cursor: "pointer", color: "gray"}}/>
