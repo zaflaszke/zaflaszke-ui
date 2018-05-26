@@ -19,7 +19,7 @@ class MainOverview extends React.Component {
                 <div className="main-overview__subtitle">
                     Mała przysługa, za dużą przyjemność!
                 </div>
-                <SearchField/>
+                <SearchField hintText="Miasto..."/>
             </div>
         )
     }

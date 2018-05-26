@@ -1,18 +1,9 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export const muiTheme = getMuiTheme({
-    fontFamily: "'Amatic SC', cursive;",
-    flatButton: {
-        fontSize: "12px",
-        primaryTextColor: "#000000"
-    },
     dialog: {
         titleFontSize: 16,
         bodyFontSize: 14,
-    },
-    textField: {
-        focusColor: "seagreen",
-        hintColor: "gray",
     },
     datePicker: {
         color: "black",
@@ -22,6 +13,15 @@ export const muiTheme = getMuiTheme({
         selectTextColor: "#FFFFFF",
         calendarYearBackgroundColor: "#FFFFFF",
         headerColor: "seagreen"
+    },
+    flatButton: {
+        fontSize: "12px",
+        primaryTextColor: "#000000"
+    },
+    fontFamily: "'Amatic SC', cursive",
+    textField: {
+        focusColor: "seagreen",
+        hintColor: "gray",
     },
     timePicker: {
         color: "black",

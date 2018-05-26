@@ -1,5 +1,8 @@
 import * as React from "react/lib/ReactIsomorphic";
+import PropTypes from 'prop-types';
 import {AutoComplete} from 'material-ui';
+import SearchIcon from 'material-ui/svg-icons/action/search';
+import ClearIcon from 'material-ui/svg-icons/content/clear';
 
 const cities = [
     'Warszawa',
@@ -13,6 +16,10 @@ const styles = {
     textFieldStyle: {
         fontSize: "25px",
         fontWeight: "bold",
+        width: "200px"
+    },
+    autoCompleteStyle: {
+        width: "200px"
     },
     menuItemStyle: {
         fontSize: '25px'
@@ -39,6 +46,12 @@ class SearchField extends React.Component {
         });
     };
 
+    handleClearInput = (event) => {
+        this.setState({
+            searchText: ""
+        })
+    };
+
     filter = (searchText, key) => {
         return key.indexOf(searchText) !== -1;
     };
@@ -46,8 +59,9 @@ class SearchField extends React.Component {
     render() {
         return (
             <div>
+                <SearchIcon style={{color: "gray"}}/>
                 <AutoComplete
-                    hintText="Miasto"
+                    hintText={this.props.hintText}
                     searchText={this.state.searchText}
                     onUpdateInput={this.handleUpdateInput}
                     onNewRequest={this.handleNewRequest}
@@ -56,10 +70,17 @@ class SearchField extends React.Component {
                     openOnFocus={true}
                     textFieldStyle={styles.textFieldStyle}
                     menuProps={{menuItemStyle: styles.menuItemStyle}}
-                />
+                    style={styles.autoCompleteStyle}
+                >
+                </AutoComplete>
+                <ClearIcon onClick={this.handleClearInput} style={{cursor: "pointer", color: "gray"}}/>
             </div>
         )
     }
 }
+
+SearchField.propTypes = {
+    hintText: PropTypes.string
+};
 
 export default SearchField;
