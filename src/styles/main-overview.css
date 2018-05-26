@@ -1,5 +1,7 @@
 body {
     font-family: 'Amatic SC', cursive;
+    background: url('../images/background.png') no-repeat fixed;
+    background-size: cover;
 }
 
 .main-overview {
@@ -17,7 +19,7 @@ body {
 .main-overview__title {
     font-size: 60px;
     font-weight: bold;
-    margin: 30px 0 0 10px;
+    margin: 20px 0 0 10px;
 }
 
 .main-overview__subtitle {
@@ -29,4 +31,9 @@ body {
     width: auto;
     height: 100px;
     margin-bottom: 20px
+}
+
+.main-overview__footer {
+    position: fixed;
+    bottom: 0;
 }

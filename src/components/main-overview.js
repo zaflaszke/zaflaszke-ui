@@ -34,6 +34,9 @@ class MainOverview extends React.Component {
                     labelPosition="before"
                     style={styles.searchButton}
                 />
+                <div className="main-overview__footer">
+                    Created by E.K & M.K
+                </div>
             </div>
         )
     }
