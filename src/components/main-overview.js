@@ -1,6 +1,14 @@
 import React from "react";
 import SearchField from "./search-field";
 import "../styles/main-overview.css";
+import {FlatButton} from "material-ui";
+import ForwardIcon from "material-ui/svg-icons/content/forward";
+
+const styles = {
+    searchButton: {
+        marginTop: "50px"
+    }
+};
 
 class MainOverview extends React.Component {
     constructor() {
@@ -20,6 +28,12 @@ class MainOverview extends React.Component {
                     Mała przysługa, za dużą przyjemność!
                 </div>
                 <SearchField hintText="Miasto..."/>
+                <FlatButton
+                    label="Szukaj"
+                    icon={<ForwardIcon color="seagreen"/>}
+                    labelPosition="before"
+                    style={styles.searchButton}
+                />
             </div>
         )
     }

@@ -15,7 +15,7 @@ export const muiTheme = getMuiTheme({
         headerColor: "seagreen"
     },
     flatButton: {
-        fontSize: "12px",
+        fontSize: "25px",
         primaryTextColor: "#000000"
     },
     fontFamily: "'Amatic SC', cursive",
