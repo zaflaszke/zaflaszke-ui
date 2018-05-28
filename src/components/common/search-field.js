@@ -23,6 +23,10 @@ const styles = {
     },
     menuItemStyle: {
         fontSize: '25px'
+    },
+    iconStyle: {
+        color: "gray",
+        marginTop: "18px"
     }
 };
 
@@ -77,23 +81,27 @@ class SearchField extends React.Component {
 
     render() {
         return (
-            <div>
-                <SearchIcon style={{color: "gray"}}/>
-                <AutoComplete
-                    hintText={this.props.hintText}
-                    searchText={this.state.searchText}
-                    onUpdateInput={this.handleUpdateInput}
-                    onNewRequest={this.handleNewRequest}
-                    dataSource={cities}
-                    filter={(searchText, key) => this.filter(searchText, key)}
-                    openOnFocus={true}
-                    textFieldStyle={styles.textFieldStyle}
-                    menuProps={{menuItemStyle: styles.menuItemStyle}}
-                    style={styles.autoCompleteStyle}
-                    ref={node => this.autoComplete = node}
-                >
-                </AutoComplete>
-                <ClearIcon onClick={this.handleClearInput} style={{cursor: "pointer", color: "gray"}}/>
+            <div style={{display: "flex"}}>
+                    <SearchIcon style={styles.iconStyle}/>
+                <div>
+                    <AutoComplete
+                        hintText={this.props.hintText}
+                        searchText={this.state.searchText}
+                        onUpdateInput={this.handleUpdateInput}
+                        onNewRequest={this.handleNewRequest}
+                        dataSource={cities}
+                        filter={(searchText, key) => this.filter(searchText, key)}
+                        openOnFocus={true}
+                        textFieldStyle={styles.textFieldStyle}
+                        menuProps={{menuItemStyle: styles.menuItemStyle}}
+                        style={styles.autoCompleteStyle}
+                        ref={node => this.autoComplete = node}
+                    >
+                    </AutoComplete>
+                </div>
+                <div>
+                    <ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>
+                </div>
             </div>
         )
     }

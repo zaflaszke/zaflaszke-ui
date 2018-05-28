@@ -1,39 +1,39 @@
 body {
     font-family: 'Amatic SC', cursive;
+}
+
+.start {
+    font-family: 'Amatic SC', cursive;
     background: url('../images/background.png') no-repeat fixed;
     background-size: cover;
-}
-
-.main-overview {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    top: 0;
-    right: 0;
-    left: 0;
-    margin: 50px auto;
     position: absolute;
+    margin: 50px auto;
+    width: 100%;
+    height: 100%;
 }
 
-.main-overview__title {
+.start__title {
     font-size: 60px;
     font-weight: bold;
     margin: 20px 0 0 10px;
 }
 
-.main-overview__subtitle {
+.start__subtitle {
     font-size: 35px;
     margin: 0 0 70px 150px;
 }
 
-.main-overview__image {
+.start__image {
     width: auto;
     height: 100px;
     margin-bottom: 20px
 }
 
-.main-overview__footer {
+.start__footer {
     position: fixed;
     bottom: 0;
 }
