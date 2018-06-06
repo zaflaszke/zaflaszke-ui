@@ -57,19 +57,23 @@ class SearchField extends React.Component {
         })
     };
 
-    handleUpdateInput = (searchText, index) => {
+    handleUpdateInput = (searchText) => {
         this.setState({
             searchText: searchText,
         });
     };
 
     handleNewRequest = (searchText) => {
+        const {search} = this.props;
+
         this.setState({
             searchText: searchText,
         });
+
+        search(searchText);
     };
 
-    handleClearInput = (event) => {
+    handleClearInput = () => {
         this.setState({
             searchText: ""
         })
@@ -82,7 +86,7 @@ class SearchField extends React.Component {
     render() {
         return (
             <div style={{display: "flex"}}>
-                    <SearchIcon style={styles.iconStyle}/>
+                <SearchIcon style={styles.iconStyle}/>
                 <div>
                     <AutoComplete
                         hintText={this.props.hintText}
@@ -108,7 +112,8 @@ class SearchField extends React.Component {
 }
 
 SearchField.propTypes = {
-    hintText: PropTypes.string
+    hintText: PropTypes.string,
+    search: PropTypes.func
 };
 
 export default SearchField;
