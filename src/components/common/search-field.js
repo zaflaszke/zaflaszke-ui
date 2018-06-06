@@ -27,6 +27,9 @@ const styles = {
     iconStyle: {
         color: "gray",
         marginTop: "18px"
+    },
+    errorStyle: {
+        fontSize: "15px"
     }
 };
 
@@ -84,12 +87,14 @@ class SearchField extends React.Component {
     };
 
     render() {
+        const {hintText, searchFieldError} = this.props;
+
         return (
             <div style={{display: "flex"}}>
                 <SearchIcon style={styles.iconStyle}/>
                 <div>
                     <AutoComplete
-                        hintText={this.props.hintText}
+                        hintText={hintText}
                         searchText={this.state.searchText}
                         onUpdateInput={this.handleUpdateInput}
                         onNewRequest={this.handleNewRequest}
@@ -100,6 +105,8 @@ class SearchField extends React.Component {
                         menuProps={{menuItemStyle: styles.menuItemStyle}}
                         style={styles.autoCompleteStyle}
                         ref={node => this.autoComplete = node}
+                        errorText={searchFieldError}
+                        errorStyle={styles.errorStyle}
                     >
                     </AutoComplete>
                 </div>
@@ -112,8 +119,9 @@ class SearchField extends React.Component {
 }
 
 SearchField.propTypes = {
-    hintText: PropTypes.string,
-    search: PropTypes.func
+    hintText: PropTypes.string.isRequired,
+    search: PropTypes.func.isRequired,
+    searchFieldError: PropTypes.string.isRequired
 };
 
 export default SearchField;

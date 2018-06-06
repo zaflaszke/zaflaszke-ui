@@ -18,13 +18,18 @@ class Start extends React.Component {
     constructor() {
         super();
         this.state = {
-            city: ""
+            city: "",
+            searchFieldError: ""
         }
     }
 
     handleSearch = () => {
         const {city} = this.state;
         const {setStartSearchCity} = this.props;
+
+        if (city === "") {
+            this.setState({searchFieldError: "Wybierz miasto"})
+        }
 
         setStartSearchCity(city);
     };
@@ -35,9 +40,14 @@ class Start extends React.Component {
         })
     };
 
-    render() {
-        const {city} = this.state;
+    _isCitySelected = () => {
+        return this.state.city !== "";
+    };
 
+    render() {
+        const {city, searchFieldError} = this.state;
+
+        const path = this._isCitySelected() ? `/city/${city}` : `/`;
 
         return (
             <div className="start">
@@ -50,8 +60,8 @@ class Start extends React.Component {
                 <div className="start__subtitle">
                     Mała przysługa, za dużą przyjemność!
                 </div>
-                <SearchField hintText="Miasto..." search={this.handleSetCity}/>
-                <Link to={`/city/${city}`}>
+                <SearchField hintText="Miasto..." search={this.handleSetCity} searchFieldError={searchFieldError}/>
+                <Link to={path}>
                     <FlatButton
                         label="Szukaj"
                         icon={<ForwardIcon color="seagreen"/>}

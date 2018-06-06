@@ -1,5 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {FlatButton} from "material-ui";
+import {Link} from "react-router";
+
 
 class MainOverview extends React.Component {
     constructor(props) {
@@ -9,10 +12,18 @@ class MainOverview extends React.Component {
     render() {
         const {city} = this.props.params;
 
-        return(
-            <h1>
-                {city}
-            </h1>
+        return (
+            <div>
+                <h1>
+                    {city}
+                </h1>
+                <Link to={`/`}>
+                    <FlatButton
+                        label="Wróć"
+                        labelPosition="before"
+                    />
+                </Link>
+            </div>
         )
     }
 }
