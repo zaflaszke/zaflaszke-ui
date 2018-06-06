@@ -40,6 +40,12 @@ class Start extends React.Component {
         })
     };
 
+    handleClearSearchFieldError = () => {
+        this.setState({
+            searchFieldError: ""
+        })
+    };
+
     _isCitySelected = () => {
         return this.state.city !== "";
     };
@@ -60,7 +66,9 @@ class Start extends React.Component {
                 <div className="start__subtitle">
                     Mała przysługa, za dużą przyjemność!
                 </div>
-                <SearchField hintText="Miasto..." search={this.handleSetCity} searchFieldError={searchFieldError}/>
+                <SearchField hintText="Miasto..." search={this.handleSetCity} searchFieldError={searchFieldError}
+                             clearSearchFieldError={this.handleClearSearchFieldError}
+                />
                 <Link to={path}>
                     <FlatButton
                         label="Szukaj"

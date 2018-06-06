@@ -77,9 +77,13 @@ class SearchField extends React.Component {
     };
 
     handleClearInput = () => {
+        const {clearSearchFieldError} = this.props;
+
         this.setState({
             searchText: ""
-        })
+        });
+
+        clearSearchFieldError();
     };
 
     filter = (searchText, key) => {
@@ -121,7 +125,8 @@ class SearchField extends React.Component {
 SearchField.propTypes = {
     hintText: PropTypes.string.isRequired,
     search: PropTypes.func.isRequired,
-    searchFieldError: PropTypes.string.isRequired
+    searchFieldError: PropTypes.string.isRequired,
+    clearSearchFieldError: PropTypes.func.isRequired
 };
 
 export default SearchField;
