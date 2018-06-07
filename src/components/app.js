@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component} from "react";
 import {MuiThemeProvider} from "material-ui";
 import Start from "./start/start";
 import {muiTheme} from "../styles/muiTheme";

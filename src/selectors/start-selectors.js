@@ -1,1 +1,1 @@
-export const getCurrentSearchCity = (state) => state.start.city;
+export const getCurrentSearchCity = state => state.start.city;
