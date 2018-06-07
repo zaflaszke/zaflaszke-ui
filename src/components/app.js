@@ -5,7 +5,7 @@ import {muiTheme} from "../styles/muiTheme";
 import {browserHistory, Route, Router} from "react-router";
 import MainOverview from "./main-overview/main-overview";
 import {connect} from "react-redux";
-import {getCurrentSearchCity} from "../selectors/start-selectors";
+import {getCurrentSearchCity, getCurrentSearchRegion} from "../selectors/start-selectors";
 import PropTypes from "prop-types";
 
 
@@ -15,14 +15,14 @@ export class App extends Component {
     }
 
     render() {
-        const {currentSearchCity} = this.props;
+        const {currentSearchCity, currentSearchRegion} = this.props;
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
                     <Router history={browserHistory}>
                         <Route exact path="/" component={Start}/>
-                        <Route path={`/city/:city`} component={MainOverview} city={currentSearchCity}/>
+                        <Route path={`/city/:city/region/:region`} component={MainOverview} city={currentSearchCity} region={currentSearchRegion}/>
                     </Router>
                 </div>
             </MuiThemeProvider>
@@ -32,11 +32,13 @@ export class App extends Component {
 
 App.propTypes = {
     currentSearchCity: PropTypes.string.isRequired,
+    currentSearchRegion: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = (state) => {
     return {
-        currentSearchCity: getCurrentSearchCity(state)
+        currentSearchCity: getCurrentSearchCity(state),
+        currentSearchRegion: getCurrentSearchRegion(state),
     }
 };
 

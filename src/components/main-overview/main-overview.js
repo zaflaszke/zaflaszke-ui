@@ -10,12 +10,12 @@ class MainOverview extends React.Component {
     }
 
     render() {
-        const {city} = this.props.params;
+        const {city, region} = this.props.params;
 
         return (
             <div>
                 <h1>
-                    {city}
+                    {city} w województwie {region}
                 </h1>
                 <Link to={`/`}>
                     <FlatButton
@@ -30,7 +30,8 @@ class MainOverview extends React.Component {
 
 MainOverview.propTypes = {
     params: PropTypes.shape({
-        city: PropTypes.string.isRequired
+        city: PropTypes.string.isRequired,
+        region: PropTypes.string.isRequired
     })
 };
 

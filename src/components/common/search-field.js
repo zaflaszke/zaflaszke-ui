@@ -4,13 +4,6 @@ import {AutoComplete} from 'material-ui';
 import SearchIcon from 'material-ui/svg-icons/action/search';
 import ClearIcon from 'material-ui/svg-icons/content/clear';
 
-const cities = [
-    'Warszawa',
-    'Wrocław',
-    'Zielona Góra',
-    'Gdańsk',
-    'Kraków',
-];
 
 const styles = {
     textFieldStyle: {
@@ -91,7 +84,7 @@ class SearchField extends React.Component {
     };
 
     render() {
-        const {hintText, searchFieldError} = this.props;
+        const {hintText, searchFieldError, source} = this.props;
 
         return (
             <div style={{display: "flex"}}>
@@ -102,7 +95,7 @@ class SearchField extends React.Component {
                         searchText={this.state.searchText}
                         onUpdateInput={this.handleUpdateInput}
                         onNewRequest={this.handleNewRequest}
-                        dataSource={cities}
+                        dataSource={source}
                         filter={(searchText, key) => this.filter(searchText, key)}
                         openOnFocus={true}
                         textFieldStyle={styles.textFieldStyle}
@@ -126,7 +119,8 @@ SearchField.propTypes = {
     hintText: PropTypes.string.isRequired,
     search: PropTypes.func.isRequired,
     searchFieldError: PropTypes.string.isRequired,
-    clearSearchFieldError: PropTypes.func.isRequired
+    clearSearchFieldError: PropTypes.func.isRequired,
+    source: PropTypes.array.isRequired,
 };
 
 export default SearchField;
