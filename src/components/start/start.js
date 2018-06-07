@@ -59,26 +59,30 @@ class Start extends React.Component {
 
     handleSetCity = (city) => {
         this.setState({
-            city: city
-        })
+            city: city,
+            searchFieldCityError: ""
+        });
     };
 
     handleSetRegion = (region) => {
         this.setState({
-            region: region
-        })
+            region: region,
+            searchFieldRegionError: ""
+        });
     };
 
     handleClearSearchFieldCityError = () => {
         this.setState({
-            searchFieldCityError: ""
-        })
+            searchFieldCityError: "",
+            city: "",
+        });
     };
 
     handleClearSearchFieldRegionError = () => {
         this.setState({
-            searchFieldRegionError: ""
-        })
+            searchFieldRegionError: "",
+            region: ""
+        });
     };
 
     areCityAndRegionSelected = () => {
