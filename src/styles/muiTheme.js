@@ -1,6 +1,9 @@
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 export const muiTheme = getMuiTheme({
+    appBar: {
+        color: "seagreen",
+    },
     dialog: {
         titleFontSize: 16,
         bodyFontSize: 14,
