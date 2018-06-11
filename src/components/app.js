@@ -7,6 +7,7 @@ import MainOverview from "./main-overview/main-overview";
 import {connect} from "react-redux";
 import {getCurrentSearchCity, getCurrentSearchRegion} from "../selectors/start-selectors";
 import PropTypes from "prop-types";
+import AdminPanel from "./admin/admin-panel";
 
 
 export class App extends Component {
@@ -22,7 +23,9 @@ export class App extends Component {
                 <div>
                     <Router history={browserHistory}>
                         <Route exact path="/" component={Start}/>
-                        <Route path={`/city/:city/region/:region`} component={MainOverview} city={currentSearchCity} region={currentSearchRegion}/>
+                        <Route path={`/city/:city/region/:region`} component={MainOverview} city={currentSearchCity}
+                               region={currentSearchRegion}/>
+                        <Route path={`/admin`} component={AdminPanel}/>
                     </Router>
                 </div>
             </MuiThemeProvider>

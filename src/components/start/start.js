@@ -9,7 +9,7 @@ import * as actions from "../../actions/start-actions";
 import PropTypes from "prop-types";
 
 const styles = {
-    searchButton: {
+    button: {
         marginTop: "50px"
     }
 };
@@ -95,34 +95,47 @@ class Start extends React.Component {
         const path = this.areCityAndRegionSelected() ? `/city/${city}/region/${region}` : `/`;
 
         return (
-            <div className="start">
-                <div style={{display: "flex"}}>
-                    <div className="start__title">
-                        Zaflaszkę.pl
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <div className="start">
+                    <div style={{display: "flex"}}>
+                        <div className="start__title">
+                            Zaflaszkę.pl
+                        </div>
+                        <img src={require("../../images/bottle.svg")} className="start__image"/>
                     </div>
-                    <img src={require("../../images/bottle.svg")} className="start__image"/>
-                </div>
-                <div className="start__subtitle">
-                    Mała przysługa, za dużą przyjemność!
-                </div>
-                <SearchField hintText="Miasto..." search={this.handleSetCity} searchFieldError={searchFieldCityError}
-                             clearSearchFieldError={this.handleClearSearchFieldCityError} source={cities}
-                />
-                <SearchField hintText="Województwo" search={this.handleSetRegion}
-                             searchFieldError={searchFieldRegionError}
-                             clearSearchFieldError={this.handleClearSearchFieldRegionError} source={regions}
-                />
-                <Link to={path}>
-                    <FlatButton
-                        label="Szukaj"
-                        icon={<ForwardIcon color="seagreen"/>}
-                        labelPosition="before"
-                        style={styles.searchButton}
-                        onClick={this.handleSearch}
+                    <div className="start__subtitle">
+                        Mała przysługa, za dużą przyjemność!
+                    </div>
+                    <SearchField hintText="Miasto..." search={this.handleSetCity}
+                                 searchFieldError={searchFieldCityError}
+                                 clearSearchFieldError={this.handleClearSearchFieldCityError} source={cities}
                     />
-                </Link>
-                <div className="start__footer">
-                    Created by E.K & M.K
+                    <SearchField hintText="Województwo" search={this.handleSetRegion}
+                                 searchFieldError={searchFieldRegionError}
+                                 clearSearchFieldError={this.handleClearSearchFieldRegionError} source={regions}
+                    />
+                    <Link to={path}>
+                        <FlatButton
+                            label="Szukaj"
+                            icon={<ForwardIcon color="seagreen"/>}
+                            labelPosition="before"
+                            style={styles.button}
+                            onClick={this.handleSearch}
+                        />
+                    </Link>
+                    <div className="start__footer">
+                        Created by E.K & M.K
+                    </div>
+                </div>
+                <div className="start__admin">
+                    <Link to={`/admin`}>
+                        <FlatButton
+                            label="Admin"
+                            icon={<ForwardIcon color="seagreen"/>}
+                            labelPosition="before"
+                            style={styles.button}
+                        />
+                    </Link>
                 </div>
             </div>
         )
