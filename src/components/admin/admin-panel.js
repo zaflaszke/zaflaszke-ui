@@ -16,6 +16,9 @@ const styles = {
         fontSize: "25px",
         margin: "10px",
         width: "100%"
+    },
+    adminTitle: {
+        fontSize: "40px",
     }
 };
 
@@ -33,7 +36,6 @@ class AdminPanel extends React.Component {
     };
 
     handleOpenAddCityForm = () => {
-        console.log('open city');
         this.setState({addCityFormOpen: !this.state.addCityFormOpen});
     };
 
@@ -47,6 +49,7 @@ class AdminPanel extends React.Component {
                     />}
                     iconStyleLeft={styles.navigationIcon}
                 />
+
                 <Drawer
                     open={this.state.menuOpen}
                     docked={false}
@@ -56,7 +59,12 @@ class AdminPanel extends React.Component {
                     <MenuItem onClick={this.handleOpenAddCityForm}>Dodaj miasto</MenuItem>
                     <MenuItem>Dodaj kategorie</MenuItem>
                 </Drawer>
-                <AddCityForm open={this.state.addCityFormOpen} />
+
+                <span style={styles.adminTitle}>
+                    Witaj w panelu admina - i tutaj bedzie nazwa uzytkownika jak beda granty
+                </span>
+
+                <AddCityForm open={this.state.addCityFormOpen} cancel={this.handleOpenAddCityForm}/>
                 <div className="admin__button--back">
                     <Link to={`/`}>
                         <FlatButton
@@ -65,6 +73,7 @@ class AdminPanel extends React.Component {
                         />
                     </Link>
                 </div>
+
             </div>
         )
     }
