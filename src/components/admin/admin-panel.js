@@ -3,6 +3,7 @@ import {Link} from "react-router";
 import {AppBar, Drawer, FlatButton, MenuItem} from "material-ui";
 import NavigationIcon from "material-ui/svg-icons/navigation/menu";
 import "../../styles/admin.css";
+import AddCityForm from "./add-city-form";
 
 const styles = {
     navigationIcon: {
@@ -23,11 +24,17 @@ class AdminPanel extends React.Component {
         super(props);
         this.state = {
             menuOpen: false,
+            addCityFormOpen: false,
         }
     }
 
     handleOpenMenu = () => {
         this.setState({menuOpen: !this.state.menuOpen});
+    };
+
+    handleOpenAddCityForm = () => {
+        console.log('open city');
+        this.setState({addCityFormOpen: !this.state.addCityFormOpen});
     };
 
     render() {
@@ -46,9 +53,10 @@ class AdminPanel extends React.Component {
                     onRequestChange={(open) => this.setState({menuOpen: open})}
                 >
                     <span style={styles.drawerTitle}> Wybierz akcje: </span>
-                    <MenuItem>Dodaj miasto</MenuItem>
+                    <MenuItem onClick={this.handleOpenAddCityForm}>Dodaj miasto</MenuItem>
                     <MenuItem>Dodaj kategorie</MenuItem>
                 </Drawer>
+                <AddCityForm open={this.state.addCityFormOpen} />
                 <div className="admin__button--back">
                     <Link to={`/`}>
                         <FlatButton
