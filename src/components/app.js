@@ -29,7 +29,7 @@ export class App extends Component {
                     </Router>
                 </div>
             </MuiThemeProvider>
-        )
+        );
     }
 }
 
@@ -42,7 +42,7 @@ const mapStateToProps = (state) => {
     return {
         currentSearchCity: getCurrentSearchCity(state),
         currentSearchRegion: getCurrentSearchRegion(state),
-    }
+    };
 };
 
 export default connect(mapStateToProps)(App);

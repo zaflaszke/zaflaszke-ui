@@ -24,7 +24,7 @@ class MainOverview extends React.Component {
                     />
                 </Link>
             </div>
-        )
+        );
     }
 }
 

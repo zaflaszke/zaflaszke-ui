@@ -27,7 +27,7 @@ const styles = {
 };
 
 class SearchField extends React.Component {
-    constructor(props) {
+    constructor() {
         super();
         this.state = {
             searchText: '',
@@ -50,7 +50,7 @@ class SearchField extends React.Component {
                     autoCompleteRefsMenu.refs.focusedMenuItem.props.value,
                     autoCompleteRefsMenu.state.focusIndex);
             }
-        })
+        });
     };
 
     handleUpdateInput = (searchText) => {
@@ -97,21 +97,20 @@ class SearchField extends React.Component {
                         onNewRequest={this.handleNewRequest}
                         dataSource={source}
                         filter={(searchText, key) => this.filter(searchText, key)}
-                        openOnFocus={true}
+                        openOnFocus
                         textFieldStyle={styles.textFieldStyle}
                         menuProps={{menuItemStyle: styles.menuItemStyle}}
                         style={styles.autoCompleteStyle}
                         ref={node => this.autoComplete = node}
                         errorText={searchFieldError}
                         errorStyle={styles.errorStyle}
-                    >
-                    </AutoComplete>
+                    />
                 </div>
                 <div>
                     <ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>
                 </div>
             </div>
-        )
+        );
     }
 }
 

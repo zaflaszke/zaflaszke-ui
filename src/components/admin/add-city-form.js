@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 import {FlatButton, TextField} from "material-ui";
 import SaveIcon from "material-ui/svg-icons/content/save";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
+import ClearIcon from 'material-ui/svg-icons/content/clear';
 
 
 const styles = {
-    visible: {fontSize: "25px", width: "100%", textAlign: "center"},
-    inVisible: {display: "none", fontSize: "25px", width: "100%", textAlign: "center"}
+    visible: {fontSize: "32px", width: "100%", textAlign: "center"},
+    inVisible: {display: "none"},
+    textFieldStyle: {fontSize: "25px"}
 };
 
 class AddCityForm extends React.Component {
@@ -16,7 +18,7 @@ class AddCityForm extends React.Component {
         this.state = {
             city: "",
             region: ""
-        }
+        };
     }
 
     handleCityInput = (event, value) => {
@@ -39,28 +41,33 @@ class AddCityForm extends React.Component {
         this.props.cancel();
     };
 
+
     render() {
         const {open} = this.props;
         const style = open ? styles.visible : styles.inVisible;
 
         return (
             <div style={style}>
-                Add new city <br/>
+                Dodaj nowe miasto <br/>
                 <TextField
                     hintText="Nazwa miasta"
                     floatingLabelText="Nazwa miasta"
-                    floatingLabelFixed={true}
+                    floatingLabelFixed
                     onChange={this.handleCityInput}
                     value={this.state.city}
+                    style={styles.textFieldStyle}
                 />
+                {/*<ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>*/}
                 <br/>
                 <TextField
                     hintText="Nazwa województwa"
                     floatingLabelText="Nazwa województwa"
-                    floatingLabelFixed={true}
+                    floatingLabelFixed
                     onChange={this.handleRegionInput}
                     value={this.state.region}
+                    style={styles.textFieldStyle}
                 />
+                {/*<ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>*/}
                 <br/>
                 <br/>
                 <br/>
@@ -75,7 +82,7 @@ class AddCityForm extends React.Component {
                     onClick={this.handleCancelAddNewCity}
                 />
             </div>
-        )
+        );
     }
 }
 

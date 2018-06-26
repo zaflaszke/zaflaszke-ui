@@ -28,7 +28,7 @@ class AdminPanel extends React.Component {
         this.state = {
             menuOpen: false,
             addCityFormOpen: false,
-        }
+        };
     }
 
     handleOpenMenu = () => {
@@ -75,7 +75,7 @@ class AdminPanel extends React.Component {
                 </div>
 
             </div>
-        )
+        );
     }
 }
 

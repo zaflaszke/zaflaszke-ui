@@ -38,7 +38,7 @@ class Start extends React.Component {
             region: "",
             searchFieldCityError: "",
             searchFieldRegionError: ""
-        }
+        };
     }
 
     handleSearch = () => {
@@ -46,11 +46,11 @@ class Start extends React.Component {
         const {setStartSearchCity, setStartSearchRegion} = this.props;
 
         if (city === "") {
-            this.setState({searchFieldCityError: "Wybierz miasto"})
+            this.setState({searchFieldCityError: "Wybierz miasto"});
         }
 
         if (region === "") {
-            this.setState({searchFieldRegionError: "Wybierz województwo"})
+            this.setState({searchFieldRegionError: "Wybierz województwo"});
         }
 
         setStartSearchCity(city);
@@ -138,7 +138,7 @@ class Start extends React.Component {
                     </Link>
                 </div>
             </div>
-        )
+        );
     }
 }
 
@@ -147,8 +147,8 @@ Start.propTypes = {
     setStartSearchRegion: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => {
-    return {}
+const mapStateToProps = () => {
+    return {};
 };
 
 export default connect(mapStateToProps, actions)(Start);
