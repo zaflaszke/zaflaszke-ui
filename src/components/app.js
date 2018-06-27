@@ -8,16 +8,17 @@ import {connect} from "react-redux";
 import {getCurrentSearchCity, getCurrentSearchRegion} from "../selectors/start-selectors";
 import PropTypes from "prop-types";
 import AdminPanel from "./admin/admin-panel";
+import {fetchRegions} from "../actions/start-actions";
 
 
-export class App extends Component {
-    constructor() {
-        super();
+class App extends Component {
+    constructor(props) {
+        super(props);
+        props.fetchRegions();
     }
 
     render() {
         const {currentSearchCity, currentSearchRegion} = this.props;
-
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div>
@@ -45,4 +46,10 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchRegions: () => dispatch(fetchRegions())
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

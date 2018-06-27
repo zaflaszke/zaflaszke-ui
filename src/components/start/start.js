@@ -7,6 +7,7 @@ import {Link} from "react-router";
 import {connect} from "react-redux";
 import * as actions from "../../actions/start-actions";
 import PropTypes from "prop-types";
+import {getRegions} from "../../selectors/start-selectors";
 
 const styles = {
     button: {
@@ -21,13 +22,6 @@ const cities = [
     'Zielona Góra',
     'Gdańsk',
     'Kraków',
-];
-
-const regions = [
-    "Lubuskie BEZ gorzowa",
-    "Dolnośląskie",
-    "Mazowieckie",
-    "Małopolskie"
 ];
 
 class Start extends React.Component {
@@ -112,7 +106,8 @@ class Start extends React.Component {
                     />
                     <SearchField hintText="Województwo" search={this.handleSetRegion}
                                  searchFieldError={searchFieldRegionError}
-                                 clearSearchFieldError={this.handleClearSearchFieldRegionError} source={regions}
+                                 clearSearchFieldError={this.handleClearSearchFieldRegionError}
+                                 source={this.props.regions}
                     />
                     <Link to={path}>
                         <FlatButton
@@ -147,8 +142,10 @@ Start.propTypes = {
     setStartSearchRegion: PropTypes.func.isRequired
 };
 
-const mapStateToProps = () => {
-    return {};
+const mapStateToProps = (state) => {
+    return {
+        regions: getRegions(state),
+    };
 };
 
 export default connect(mapStateToProps, actions)(Start);

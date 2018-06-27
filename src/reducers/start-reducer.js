@@ -1,8 +1,10 @@
-import {SET_START_SEARCH_CITY, SET_START_SEARCH_REGION} from "../types/start-types";
+import {FETCHED_REGIONS, SET_START_SEARCH_CITY, SET_START_SEARCH_REGION} from "../types/start-types";
 
 export const initialState = {
     city: "",
-    region: ""
+    region: "",
+
+    regions: [],
 };
 
 export const startReducer = (state = initialState, action) => {
@@ -12,6 +14,9 @@ export const startReducer = (state = initialState, action) => {
         }
         case SET_START_SEARCH_REGION: {
             return {...state, region: action.payload};
+        }
+        case FETCHED_REGIONS: {
+            return {...state, regions: action.payload}
         }
         default: {
             return state;
