@@ -34,8 +34,8 @@ export class App extends Component {
 }
 
 App.propTypes = {
-    currentSearchCity: PropTypes.string.isRequired,
-    currentSearchRegion: PropTypes.string.isRequired,
+    currentSearchCity: PropTypes.string,
+    currentSearchRegion: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {

@@ -9,7 +9,8 @@ import ClearIcon from 'material-ui/svg-icons/content/clear';
 const styles = {
     visible: {fontSize: "32px", width: "100%", textAlign: "center"},
     inVisible: {display: "none"},
-    textFieldStyle: {fontSize: "25px"}
+    textFieldStyle: {fontSize: "25px"},
+    errorStyle: {fontSize: "22px", textAlign: "left"}
 };
 
 class AddCityForm extends React.Component {
@@ -17,7 +18,9 @@ class AddCityForm extends React.Component {
         super(props);
         this.state = {
             city: "",
-            region: ""
+            region: "",
+            cityError: "",
+            regionError: ""
         };
     }
 
@@ -30,15 +33,36 @@ class AddCityForm extends React.Component {
     };
 
     handleSaveNewCity = () => {
-        console.log('Save new city, call action on redux -> service -> persist');
+        const {city, region} = this.state;
+
+        if (city === "") {
+            this.setState({cityError: "Miasto nie może być puste"});
+        } else {
+            this.setState({cityError: ""});
+        }
+
+        if (region === "") {
+            this.setState({regionError: "Wybierz województwo"});
+        } else {
+            this.setState({regionError: ""});
+        }
+
+        if (region !== "" && city !== "") {
+            console.log('Save new city, call action on redux -> service -> persist');
+        }
     };
 
     handleCancelAddNewCity = () => {
-        this.setState({
-            city: "",
-            region: ""
-        });
+        this.setState({city: "", region: "", cityError: "", regionError: ""});
         this.props.cancel();
+    };
+
+    handleClearNewCity = () => {
+        this.setState({city: ""});
+    };
+
+    handleClearNewRegion = () => {
+        this.setState({region: ""});
     };
 
 
@@ -56,8 +80,10 @@ class AddCityForm extends React.Component {
                     onChange={this.handleCityInput}
                     value={this.state.city}
                     style={styles.textFieldStyle}
+                    errorText={this.state.cityError}
+                    errorStyle={styles.errorStyle}
                 />
-                {/*<ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>*/}
+                <ClearIcon onClick={this.handleClearNewCity} style={{...styles.iconStyle, cursor: "pointer"}}/>
                 <br/>
                 <TextField
                     hintText="Nazwa województwa"
@@ -66,8 +92,10 @@ class AddCityForm extends React.Component {
                     onChange={this.handleRegionInput}
                     value={this.state.region}
                     style={styles.textFieldStyle}
+                    errorText={this.state.regionError}
+                    errorStyle={styles.errorStyle}
                 />
-                {/*<ClearIcon onClick={this.handleClearInput} style={{...styles.iconStyle, cursor: "pointer"}}/>*/}
+                <ClearIcon onClick={this.handleClearNewRegion} style={{...styles.iconStyle, cursor: "pointer"}}/>
                 <br/>
                 <br/>
                 <br/>
