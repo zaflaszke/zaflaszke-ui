@@ -9,7 +9,6 @@ export const setStartSearchRegion = makeActionCreator(SET_START_SEARCH_REGION, '
 
 
 export const fetchedRegions = makeActionCreator(FETCHED_REGIONS, 'payload');
-
 export const fetchRegions = () => {
     return (dispatch) => {
         return regionService.getAllRegions()

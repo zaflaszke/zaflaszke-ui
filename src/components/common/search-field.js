@@ -9,10 +9,10 @@ const styles = {
     textFieldStyle: {
         fontSize: "25px",
         fontWeight: "bold",
-        width: "200px"
+        width: "250px"
     },
     autoCompleteStyle: {
-        width: "200px"
+        width: "250px"
     },
     menuItemStyle: {
         fontSize: '25px'
@@ -84,11 +84,11 @@ class SearchField extends React.Component {
     };
 
     render() {
-        const {hintText, searchFieldError, source} = this.props;
+        const {hintText, searchFieldError, source, loupeIcon} = this.props;
 
         return (
-            <div style={{display: "flex"}}>
-                <SearchIcon style={styles.iconStyle}/>
+            <div style={{display: "flex", justifyContent: "center"}}>
+                {loupeIcon && <SearchIcon style={styles.iconStyle}/>}
                 <div>
                     <AutoComplete
                         hintText={hintText}
@@ -120,6 +120,7 @@ SearchField.propTypes = {
     searchFieldError: PropTypes.string.isRequired,
     clearSearchFieldError: PropTypes.func.isRequired,
     source: PropTypes.array.isRequired,
+    loupeIcon: PropTypes.bool
 };
 
 export default SearchField;

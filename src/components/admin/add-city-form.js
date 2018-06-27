@@ -4,13 +4,24 @@ import {FlatButton, TextField} from "material-ui";
 import SaveIcon from "material-ui/svg-icons/content/save";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
 import ClearIcon from 'material-ui/svg-icons/content/clear';
+import SearchField from "../common/search-field";
+import {getRegions} from "../../selectors/start-selectors";
+import {connect} from "react-redux";
 
 
 const styles = {
-    visible: {fontSize: "32px", width: "100%", textAlign: "center"},
+    visible: {
+        fontSize: "32px",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        textAlign: "center"
+    },
     inVisible: {display: "none"},
-    textFieldStyle: {fontSize: "25px"},
-    errorStyle: {fontSize: "22px", textAlign: "left"}
+    textFieldStyle: {fontSize: "25px", width: "250px", fontWeight: "bold"},
+    errorStyle: {fontSize: "22px", textAlign: "left"},
+    iconStyle: {color: "gray", marginTop: "18px"}
 };
 
 class AddCityForm extends React.Component {
@@ -48,7 +59,7 @@ class AddCityForm extends React.Component {
         }
 
         if (region !== "" && city !== "") {
-           // console.log('Save new city, call action on redux -> service -> persist');
+            // console.log('Save new city, call action on redux -> service -> persist');
         }
     };
 
@@ -72,51 +83,57 @@ class AddCityForm extends React.Component {
 
         return (
             <div style={style}>
-                Dodaj nowe miasto <br/>
-                <TextField
-                    hintText="Nazwa miasta"
-                    floatingLabelText="Nazwa miasta"
-                    floatingLabelFixed
-                    onChange={this.handleCityInput}
-                    value={this.state.city}
-                    style={styles.textFieldStyle}
-                    errorText={this.state.cityError}
-                    errorStyle={styles.errorStyle}
-                />
-                <ClearIcon onClick={this.handleClearNewCity} style={{...styles.iconStyle, cursor: "pointer"}}/>
-                <br/>
-                <TextField
-                    hintText="Nazwa województwa"
-                    floatingLabelText="Nazwa województwa"
-                    floatingLabelFixed
-                    onChange={this.handleRegionInput}
-                    value={this.state.region}
-                    style={styles.textFieldStyle}
-                    errorText={this.state.regionError}
-                    errorStyle={styles.errorStyle}
-                />
-                <ClearIcon onClick={this.handleClearNewRegion} style={{...styles.iconStyle, cursor: "pointer"}}/>
-                <br/>
-                <br/>
-                <br/>
-                <FlatButton
-                    label={"Zapisz"}
-                    icon={<SaveIcon/>}
-                    onClick={this.handleSaveNewCity}
-                />
-                <FlatButton
-                    label={"Anuluj"}
-                    icon={<CancelIcon/>}
-                    onClick={this.handleCancelAddNewCity}
-                />
+                Dodaj nowe miasto
+                <div>
+                    <TextField
+                        hintText="Nazwa miasta"
+                        floatingLabelText="Nazwa miasta"
+                        floatingLabelFixed
+                        onChange={this.handleCityInput}
+                        value={this.state.city}
+                        style={styles.textFieldStyle}
+                        errorText={this.state.cityError}
+                        errorStyle={styles.errorStyle}
+                    />
+                    <ClearIcon onClick={this.handleClearNewCity} style={{...styles.iconStyle, cursor: "pointer"}}/>
+                </div>
+                <div>
+                    <SearchField hintText={"Nazwa województwa"}
+                                 search={this.handleRegionInput}
+                                 searchFieldError={this.state.regionError}
+                                 clearSearchFieldError={this.handleClearNewRegion}
+                                 source={this.props.regions}
+                                 loupeIcon={false}
+                    />
+                </div>
+                <div style={{marginTop: "40px"}}>
+                    <FlatButton
+                        label={"Zapisz"}
+                        icon={<SaveIcon/>}
+                        onClick={this.handleSaveNewCity}
+                    />
+                    <FlatButton
+                        label={"Anuluj"}
+                        icon={<CancelIcon/>}
+                        onClick={this.handleCancelAddNewCity}
+                    />
+                </div>
             </div>
         );
     }
 }
 
-AddCityForm.propTypes = {
-    open: PropTypes.bool.isRequired,
-    cancel: PropTypes.func.isRequired
+const mapStateToProps = (state) => {
+    return {
+        regions: getRegions(state),
+    };
 };
 
-export default AddCityForm;
+
+AddCityForm.propTypes = {
+    open: PropTypes.bool.isRequired,
+    cancel: PropTypes.func.isRequired,
+    regions: PropTypes.array
+};
+
+export default connect(mapStateToProps)(AddCityForm);

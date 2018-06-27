@@ -100,14 +100,19 @@ class Start extends React.Component {
                     <div className="start__subtitle">
                         Mała przysługa, za dużą przyjemność!
                     </div>
-                    <SearchField hintText="Miasto..." search={this.handleSetCity}
+                    <SearchField hintText="Miasto..."
+                                 search={this.handleSetCity}
                                  searchFieldError={searchFieldCityError}
-                                 clearSearchFieldError={this.handleClearSearchFieldCityError} source={cities}
+                                 clearSearchFieldError={this.handleClearSearchFieldCityError}
+                                 source={cities}
+                                 loupeIcon
                     />
-                    <SearchField hintText="Województwo" search={this.handleSetRegion}
+                    <SearchField hintText="Województwo"
+                                 search={this.handleSetRegion}
                                  searchFieldError={searchFieldRegionError}
                                  clearSearchFieldError={this.handleClearSearchFieldRegionError}
                                  source={this.props.regions}
+                                 loupeIcon
                     />
                     <Link to={path}>
                         <FlatButton
