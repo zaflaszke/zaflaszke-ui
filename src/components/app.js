@@ -37,6 +37,7 @@ class App extends Component {
 App.propTypes = {
     currentSearchCity: PropTypes.string,
     currentSearchRegion: PropTypes.string,
+    fetchRegions: PropTypes.func,
 };
 
 const mapStateToProps = (state) => {
@@ -48,8 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchRegions: () => dispatch(fetchRegions())
-    }
+        fetchRegions: () => dispatch(fetchRegions()),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

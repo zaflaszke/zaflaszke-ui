@@ -139,7 +139,8 @@ class Start extends React.Component {
 
 Start.propTypes = {
     setStartSearchCity: PropTypes.func.isRequired,
-    setStartSearchRegion: PropTypes.func.isRequired
+    setStartSearchRegion: PropTypes.func.isRequired,
+    regions: PropTypes.array,
 };
 
 const mapStateToProps = (state) => {

@@ -16,7 +16,7 @@ export const startReducer = (state = initialState, action) => {
             return {...state, region: action.payload};
         }
         case FETCHED_REGIONS: {
-            return {...state, regions: action.payload}
+            return {...state, regions: action.payload};
         }
         default: {
             return state;

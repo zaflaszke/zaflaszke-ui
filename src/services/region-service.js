@@ -10,7 +10,7 @@ class RegionService extends BaseService {
 
     getAllRegions = () => {
         return axios.get(this.path);
-    }
+    };
 }
 
 export default RegionService;

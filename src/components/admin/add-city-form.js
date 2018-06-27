@@ -48,7 +48,7 @@ class AddCityForm extends React.Component {
         }
 
         if (region !== "" && city !== "") {
-            console.log('Save new city, call action on redux -> service -> persist');
+           // console.log('Save new city, call action on redux -> service -> persist');
         }
     };
 
