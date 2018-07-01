@@ -82,7 +82,7 @@ class AddCityForm extends React.Component {
         const style = open ? styles.visible : styles.inVisible;
 
         return (
-            <div style={styles.visible}>
+            <div style={style}>
                 Dodaj nowe miasto
 
                 <InputField hintText="Nazwa miasta"
