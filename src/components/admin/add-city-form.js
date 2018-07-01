@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {FlatButton, TextField} from "material-ui";
+import {FlatButton} from "material-ui";
 import SaveIcon from "material-ui/svg-icons/content/save";
 import CancelIcon from "material-ui/svg-icons/navigation/cancel";
-import ClearIcon from 'material-ui/svg-icons/content/clear';
 import SearchField from "../common/search-field";
 import {getRegions} from "../../selectors/start-selectors";
 import {connect} from "react-redux";
+import InputField from "../common/input-field";
 
 
 const styles = {
@@ -20,7 +20,7 @@ const styles = {
     },
     inVisible: {display: "none"},
     textFieldStyle: {fontSize: "25px", width: "250px", fontWeight: "bold"},
-    errorStyle: {fontSize: "22px", textAlign: "left"},
+    errorStyle: {fontSize: "15px", textAlign: "left"},
     iconStyle: {color: "gray", marginTop: "18px"}
 };
 
@@ -39,7 +39,7 @@ class AddCityForm extends React.Component {
         this.setState({city: value});
     };
 
-    handleRegionInput = (event, value) => {
+    handleRegionInput = (value) => {
         this.setState({region: value});
     };
 
@@ -82,22 +82,17 @@ class AddCityForm extends React.Component {
         const style = open ? styles.visible : styles.inVisible;
 
         return (
-            <div style={style}>
+            <div style={styles.visible}>
                 Dodaj nowe miasto
-                <div>
-                    <TextField
-                        hintText="Nazwa miasta"
-                        floatingLabelText="Nazwa miasta"
-                        floatingLabelFixed
-                        onChange={this.handleCityInput}
-                        value={this.state.city}
-                        style={styles.textFieldStyle}
-                        errorText={this.state.cityError}
-                        errorStyle={styles.errorStyle}
-                    />
-                    <ClearIcon onClick={this.handleClearNewCity} style={{...styles.iconStyle, cursor: "pointer"}}/>
-                </div>
-                <div>
+
+                <InputField hintText="Nazwa miasta"
+                            floatingLabelText="Nazwa miasta"
+                            onChange={this.handleCityInput}
+                            onClear={this.handleClearNewCity}
+                            errorText={this.state.cityError}
+                            input={this.state.city}
+                />
+                <div style={{textAlign: "left"}}>
                     <SearchField hintText={"Nazwa województwa"}
                                  search={this.handleRegionInput}
                                  searchFieldError={this.state.regionError}

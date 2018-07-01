@@ -22,7 +22,7 @@ const styles = {
         marginTop: "18px"
     },
     errorStyle: {
-        fontSize: "15px"
+        fontSize: "15px",
     }
 };
 
